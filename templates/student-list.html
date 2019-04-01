@@ -40,13 +40,13 @@
         function sss(iiid) {
             var xmlhttp;
             var data1 = iiid;
-            var lll = "{{ ip_addr }}edit_user_id/"+ data1;
+            var lll = "{{ ip_addr }}edit_student_id/"+ data1;
             location.href = lll;
 
         }
 
         var request = new XMLHttpRequest();
-        request.open('GET', '{{ ip_addr }}all_techers', true);
+        request.open('GET', '{{ ip_addr }}all_students', true);
         request.onload = function () {
 
             // Begin accessing JSON data here
@@ -54,11 +54,11 @@
             if (request.status >= 200 && request.status < 400) {
                 var myTable = document.getElementById('myTable');
 
-                l = data.teachers.length
+                l = data.student.length
 
                 var i;
                 for (i = 0; i < l; i++) {
-                    iiid = data.teachers[i]['_id'];
+                    iiid = data.student[i]['_id'];
                     console.log("--",iiid)
                     var row = myTable.insertRow(i+1);
                     var cell1 = row.insertCell(0);
@@ -69,12 +69,12 @@
                     var cell6 = row.insertCell(5);
                     var cell7 = row.insertCell(6);
                     // Add some text to the new cells:
-                    cell1.innerHTML = data.teachers[i]['_id'];
-                    cell2.innerHTML = data.teachers[i]['first_name'];
-                    cell3.innerHTML = data.teachers[i]['last_name'];
-                    cell4.innerHTML = data.teachers[i]['email'];
-                    cell5.innerHTML = data.teachers[i]['address'];
-                    cell6.innerHTML = data.teachers[i]['description'];
+                    cell1.innerHTML = data.student[i]['_id'];
+                    cell2.innerHTML = data.student[i]['first_name'];
+                    cell3.innerHTML = data.student[i]['last_name'];
+                    cell4.innerHTML = data.student[i]['email'];
+                    cell5.innerHTML = data.student[i]['address'];
+                    cell6.innerHTML = data.student[i]['description'];
                     cell7.innerHTML = "<p><input name=\"id\" type = \"hidden\" value=" + data.users[i]['_id'] + " ><input type=\"button\" onclick= \"sss( " + data.users[i]['_id'] +") \" value= \"Edit\" ></p>";
 
                 }
