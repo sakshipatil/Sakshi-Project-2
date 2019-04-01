@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+	<meta charset=utf-8>
+	<title>Edit Teacher Details </title>
+	<style>
+		input {
+			width: 100%;
+			padding: 12px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+		.button {
+			background-color: #4CAF50; /* Green */
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+		}
+		#myTable {
+			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			width: 80%;
+		}
+
+		#myTable td, #myTable th {
+			border: 0px solid #ddd;
+			padding: 8px;
+		}
+
+		#myTable tr:nth-child(even){background-color: #f2f2f2;}
+
+		#myTable tr:hover {background-color: #ddd;}
+
+		#myTable th {
+			padding-top: 12px;
+			padding-bottom: 12px;
+			text-align: left;
+			background-color: #4CAF50;
+			color: white;
+		}
+	</style>
+	<script>
+
+		function validateForm() {
+			var x = document.forms["edit"]["first_name"].value;
+			if (x == "") {
+				alert("First Name should not be empty");
+				return false;
+			}
+			var x = document.forms["edit"]["last_name"].value;
+			if (x == "") {
+				alert("Last Name should not be empty");
+				return false;
+			}
+			var x = document.forms["edit"]["email"].value;
+			if (x == "") {
+				alert("Email should not be empty");
+				return false;
+			}
+			var x = document.forms["edit"]["address"].value;
+			if (x == "") {
+				alert("Address should not be empty");
+				return false;
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+<form id = "edit" action="{{ ip_addr }}edit_submit" onsubmit="return validateForm()" method="POST" enctype="multipart/form-data">
+	<p><h2>Edit Teacher Details :</h2></p>
+	<p><input id="uid" name="uid" type = "hidden"  value ={{data._id}} /></p>
+
+	<table id ="myTable">
+
+		<tr><td>First Name : </td><td><input type="text" id="first_name" name="first_name" placeholder="First Name "   /></td></tr>
+		<tr><td>Last Name : </td><td><input type="text" id="last_name" name="last_name" placeholder="Last Name "   /></td></tr>
+		<tr><td>Email : </td><td><input type="text" name="email" placeholder="Email "  /></td></tr>
+		<tr><td>Address : </td><td><input type="text" name="address" placeholder="Address "  /></td></tr>
+		<tr><td>Description : </td><td><input type="text" name="description" placeholder="Description "   /></td></tr>
+
+		<tr>	<td><div id="container"></div></td></tr>
+
+		<textarea id = "hh" name="hh" rows="10" cols="30" hidden>{{data.image}}</textarea>
+		<tr><td><input type="submit" class="button" value="Submit"></td></tr>
+
+	</table>
+</form>
+
+<br>
+<br>
+<br>
+<p>
+	<button class="button" onclick="location.href='{{ ip_addr }}'" type="button">All Users</button>
+</p>
+
+<script>
+	var g =document.getElementById("hh").value;
+	var k = eval(g);
+
+	var i = 0;
+	for (i=0;i<k.length;i++){
+		var img = document.createElement('img');
+		img.src =k[i];
+		img.height="200";
+		img.width="200";
+		document.getElementById('container').appendChild(img);
+	}
+</script>
+</body>
+</html>

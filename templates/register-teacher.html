@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+	<meta charset=utf-8>
+	<title>Register </title>
+
+	<style>
+		input {
+			width: 100%;
+			padding: 12px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+		.button {
+			background-color: #4CAF50; /* Green */
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			width: 200px
+		}
+		#myTable {
+			font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			width: 80%;
+		}
+
+		#myTable td, #myTable th {
+			border: 0px solid #ddd;
+			padding: 8px;
+		}
+
+		#myTable tr:nth-child(even){background-color: #f2f2f2;}
+
+		#myTable tr:hover {background-color: #ddd;}
+
+		#myTable th {
+			padding-top: 12px;
+			padding-bottom: 12px;
+			text-align: left;
+			background-color: #4CAF50;
+			color: white;
+		}
+	</style>
+	<script>
+
+		function validateForm() {
+			var x = document.forms["register"]["first_name"].value;
+			if (x == "") {
+				alert("First Name should not be empty");
+				return false;
+			}
+			var x = document.forms["register"]["last_name"].value;
+			if (x == "") {
+				alert("Last Name should not be empty");
+				return false;
+			}
+			var x = document.forms["register"]["email"].value;
+			if (x == "") {
+				alert("Email should not be empty");
+				return false;
+			}
+			var x = document.forms["register"]["address"].value;
+			if (x == "") {
+				alert("Address should not be empty");
+				return false;
+			}
+		}
+	</script>
+</head>
+
+<body>
+<form id = 'register' action="{{ ip_addr }}register_submit" onsubmit="return validateForm()" method="POST" enctype="multipart/form-data">
+	<p><h2>New Teacher, Register !</h2></p>
+	<table id ="myTable">
+
+		<tr><td>First Name : </td><td><input type="text" id="first_name" name="first_name" placeholder="First Name "/></td></tr>
+		<tr><td>Last Name : </td><td><input type="text" id="last_name"  name="last_name" placeholder="Last Name "/></td></tr>
+		<tr><td>Email : </td><td><input type="text" id="email"  name="email" placeholder="Email "/></td></tr>
+		<tr><td>Address : </td><td><input type="text" id="address" name="address" placeholder="Address "/></td></tr>
+		<tr><td>Description : </td><td><input type="text" id="description" name="description" placeholder="Description "/></td></tr>
+		<tr><td><div id ='dvPreview'></div></td></tr>
+		<tr><td><input type="submit" class="button" value="Submit"></td></tr>
+	</table>
+</form>
+<br>
+<br>
+<br>
+<p>
+	<button  class="button" onclick="location.href='{{ ip_addr }}'" type="button">All Teachers</button>
+</p>
+
+</body>
+

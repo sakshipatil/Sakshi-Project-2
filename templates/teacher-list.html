@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        #myTable {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #myTable td, #myTable th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #myTable tr:nth-child(even){background-color: #f2f2f2;}
+
+        #myTable tr:hover {background-color: #ddd;}
+
+        #myTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+    <script>
+
+        function sss(iiid) {
+            var xmlhttp;
+            var data1 = iiid;
+            var lll = "{{ ip_addr }}edit_user_id/"+ data1;
+            location.href = lll;
+
+        }
+
+        var request = new XMLHttpRequest();
+        request.open('GET', '{{ ip_addr }}all_techers', true);
+        request.onload = function () {
+
+            // Begin accessing JSON data here
+            var data = JSON.parse(this.response);
+            if (request.status >= 200 && request.status < 400) {
+                var myTable = document.getElementById('myTable');
+
+                l = data.teachers.length
+
+                var i;
+                for (i = 0; i < l; i++) {
+                    iiid = data.teachers[i]['_id'];
+                    console.log("--",iiid)
+                    var row = myTable.insertRow(i+1);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    var cell5 = row.insertCell(4);
+                    var cell6 = row.insertCell(5);
+                    var cell7 = row.insertCell(6);
+                    // Add some text to the new cells:
+                    cell1.innerHTML = data.teachers[i]['_id'];
+                    cell2.innerHTML = data.teachers[i]['first_name'];
+                    cell3.innerHTML = data.teachers[i]['last_name'];
+                    cell4.innerHTML = data.teachers[i]['email'];
+                    cell5.innerHTML = data.teachers[i]['address'];
+                    cell6.innerHTML = data.teachers[i]['description'];
+                    cell7.innerHTML = "<p><input name=\"id\" type = \"hidden\" value=" + data.users[i]['_id'] + " ><input type=\"button\" onclick= \"sss( " + data.users[i]['_id'] +") \" value= \"Edit\" ></p>";
+
+                }
+            } else {
+                const errorMessage = document.createElement('marquee');
+                errorMessage.textContent = `Gah, it's not working!`;
+                app.appendChild(errorMessage);
+            }
+        }
+
+        request.send();
+    </script>
+</head>
+<body>
+
+<p><h2>Teacher List :</h2></p>
+
+<!--<form>-->
+<form id = 'register' action="{{ ip_addr }}register" method="GET" enctype="multipart/form-data">
+
+    <table id ="myTable">
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Description</th>
+            <th>Edit</th>
+        </tr>
+
+    </table>
+    <p>
+        <button class="button" onclick="location.href='{{ ip_addr }}/register'" type="submit">Register</button>
+    </p>
+
+</form>
+</body>
+
+</html>
