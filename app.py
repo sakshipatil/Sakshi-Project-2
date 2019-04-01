@@ -11,8 +11,8 @@ import json
 from bson import json_util
 
 client = MongoClient('mongodb://localhost:27017/')
-mydb = client.userDB
-user = mydb.user
+mydb = client.teacherDB
+teacher = mydb.teacher
 
 
 app = Flask(__name__)
@@ -33,16 +33,16 @@ def home():
 def register():
     return render_template("register-teacher.html",ip_addr=ip_addr)
 
-@app.route('/edit_user_id/<user_id>', methods=['POST','GET'])
-def edit_teacher_id(user_id):
-    iid = user_id
-    c = user.find_one({"_id": int(iid)})
+@app.route('/edit-teacher_id/<teacher_id>', methods=['POST','GET'])
+def edit_teacher_id(teacher_id):
+    iid = teacher_id
+    c = teacher.find_one({"_id": int(iid)})
     return render_template("edit-teacher.html", data=c,ip_addr=ip_addr)
 
 @app.route('/register_submit', methods=['POST','GET'])
 def register_submit():
     try:
-        c = user.find_one(sort=[("_id", -1)])["_id"]
+        c = teacher.find_one(sort=[("_id", -1)])["_id"]
         c = c + 1
     except:
         c = 1
@@ -53,8 +53,8 @@ def register_submit():
     address = request.form["address"]
     description = request.form["description"]
 
-    mydict = {'_id': c,'first_name': first_name,'last_name':last_name,'email':email,'address':address,'description':description,'image':filenames}
-    y = user.insert_one(mydict)
+    mydict = {'_id': c,'first_name': first_name,'last_name':last_name,'email':email,'address':address,'description':description}
+    y = teacher.insert_one(mydict)
     return render_template("teacher-list.html")
 
 @app.route('/edit_submit', methods=['POST','GET'])
@@ -69,16 +69,17 @@ def edit_submit():
 
     mydict = {'first_name': first_name,'last_name':last_name,'email':email,'address':address,'description':description,'image':filenames}
 
-    y = user.update_one({"_id" : int(c)},{"$set":mydict},upsert=False)
-    return render_template("user_list.html")
+    y = teacher.update_one({"_id" : int(c)},{"$set":mydict},upsert=False)
+    return render_template("teacher-list.html")
 
-@app.route('/all_users', methods=['GET'])
-def all_users():
-    cursor = user.find()
+@app.route('/all_teachers', methods=['GET'])
+def all_teachers():
+    cursor = teacher.find()
     l = []
     for document in cursor:
         l.append(document)
-    data = {"teachers":l}
+        print(l)
+    data = {"teacher":l}
     ff = json.loads(json_util.dumps(data))
     return jsonify(ff)
 
