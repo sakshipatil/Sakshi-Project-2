@@ -75,7 +75,7 @@
                     cell4.innerHTML = data.student[i]['email'];
                     cell5.innerHTML = data.student[i]['address'];
                     cell6.innerHTML = data.student[i]['description'];
-                    cell7.innerHTML = "<p><input name=\"id\" type = \"hidden\" value=" + data.users[i]['_id'] + " ><input type=\"button\" onclick= \"sss( " + data.users[i]['_id'] +") \" value= \"Edit\" ></p>";
+                    cell7.innerHTML = "<p><input name=\"id\" type = \"hidden\" value=" + data.student[i]['_id'] + " ><input type=\"button\" onclick= \"sss( " + data.student[i]['_id'] +") \" value= \"Edit\" ></p>";
 
                 }
             } else {
@@ -93,7 +93,7 @@
 <p><h2>Student List :</h2></p>
 
 <!--<form>-->
-<form id = 'register' action="{{ ip_addr }}register" method="GET" enctype="multipart/form-data">
+<form id = 'register' action="{{ ip_addr }}student_register" method="GET" enctype="multipart/form-data">
 
     <table id ="myTable">
         <tr>
@@ -108,7 +108,9 @@
 
     </table>
     <p>
-        <button class="button" onclick="location.href='{{ ip_addr }}/register'" type="submit">Register</button>
+        <button class="button" onclick="location.href='{{ ip_addr }}student_register'" type="submit">Register</button>
+
+        <button class="button" onclick="location.href='{{ ip_addr }}edit_studentsubmit'" type="submit">Edit</button>
     </p>
 
 </form>

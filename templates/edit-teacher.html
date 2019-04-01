@@ -74,7 +74,7 @@
 
 <body>
 
-<form id = "edit" action="{{ ip_addr }}edit_submit" onsubmit="return validateForm()" method="POST" enctype="multipart/form-data">
+<form id = "edit" action="{{ ip_addr }}teacher_register" onsubmit="return validateForm()" method="POST" enctype="multipart/form-data">
 	<p><h2>Edit Teacher Details :</h2></p>
 	<p><input id="uid" name="uid" type = "hidden"  value ={{data._id}} /></p>
 
@@ -98,7 +98,7 @@
 <br>
 <br>
 <p>
-	<button class="button" onclick="location.href='{{ ip_addr }}'" type="button">All Teachers</button>
+	<button class="button" onclick="location.href='{{ ip_addr }}teacher'" type="button">All Teachers</button>
 </p>
 
 <script>

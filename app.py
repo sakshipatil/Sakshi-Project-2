@@ -44,23 +44,23 @@ def homepage():
 
 @app.route('/teacher_register')
 def teacher_register():
-    return render_template("register-teacher.html",ip_addr=ip_addr)
+    return render_template("register-teacher.html", ip_addr=ip_addr)
 
 @app.route('/student_register')
 def student_register():
-    return render_template("register-student.html",ip_addr=ip_addr)
+    return render_template("register-student.html", ip_addr=ip_addr)
 
 @app.route('/edit-teacher_id/<teacher_id>', methods=['POST','GET'])
 def edit_teacher_id(teacher_id):
     iid = teacher_id
     c = teacher.find_one({"_id": int(iid)})
-    return render_template("edit-teacher.html", data=c,ip_addr=ip_addr)
+    return render_template("edit-teacher.html", data=c, ip_addr=ip_addr)
 
 @app.route('/edit-student_id/<student_id>', methods=['POST','GET'])
 def edit_student_id(student_id):
     iid = student_id
     c = student.find_one({"_id": int(iid)})
-    return render_template("edit-student.html", data=c,ip_addr=ip_addr)
+    return render_template("edit-student.html", data=c, ip_addr=ip_addr)
 
 @app.route('/register_teachersubmit', methods=['POST','GET'])
 def register_teachersubmit():
@@ -76,7 +76,7 @@ def register_teachersubmit():
     address = request.form["address"]
     description = request.form["description"]
 
-    mydict = {'_id': c,'first_name': first_name,'last_name':last_name,'email':email,'address':address,'description':description}
+    mydict = {'_id': c, 'first_name': first_name, 'last_name': last_name, 'email': email, 'address': address, 'description': description}
     y = teacher.insert_one(mydict)
     return render_template("teacher-list.html")
 
@@ -94,7 +94,7 @@ def register_studentsubmit():
     address = request.form["address"]
     description = request.form["description"]
 
-    mydict = {'_id': c,'first_name': first_name,'last_name':last_name,'email':email,'address':address,'description':description}
+    mydict = {'_id': c, 'first_name': first_name, 'last_name': last_name, 'email': email, 'address': address, 'description': description}
     y = student.insert_one(mydict)
     return render_template("student-list.html")
 
