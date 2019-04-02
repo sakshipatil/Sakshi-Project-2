@@ -1,14 +1,11 @@
-from flask_restful import Resource, Api, reqparse
-from pymongo import MongoClient
-from flask import Flask,request, render_template, jsonify
-from flask_cors import CORS
-import time
-from werkzeug import secure_filename
-import imghdr
-import os
-import socket
 import json
+import socket
+
 from bson import json_util
+from flask import Flask, request, render_template, jsonify
+from flask_cors import CORS
+from flask_restful import Api
+from pymongo import MongoClient
 
 client = MongoClient('mongodb://localhost:27017/')
 mydb = client.teacherDB

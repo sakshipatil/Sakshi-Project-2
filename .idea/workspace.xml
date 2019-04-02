@@ -88,8 +88,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="27" lean-forward="true" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+            <state relative-caret-position="176">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -137,9 +140,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="77" />
-    <option name="y" value="127" />
-    <option name="width" value="1121" />
+    <option name="x" value="117" />
+    <option name="y" value="59" />
+    <option name="width" value="1111" />
     <option name="height" value="641" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -210,8 +213,8 @@
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.21316615" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.4992163" visible="true" weight="0.57491857" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="1" sideWeight="0.5007837" side_tool="true" visible="true" weight="0.57491857" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.4992163" visible="true" weight="0.57491857" />
+      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5007837" side_tool="true" visible="true" weight="0.57491857" />
       <window_info anchor="bottom" id="Python Console" order="2" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
@@ -320,8 +323,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="27" lean-forward="true" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+        <state relative-caret-position="176">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
