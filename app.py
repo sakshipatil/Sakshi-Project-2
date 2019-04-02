@@ -3,7 +3,7 @@ import socket
 
 from bson import json_util
 from flask import Flask, request, render_template, jsonify
-from flask_cors import CORS
+#from flask_cors import CORS
 from flask_restful import Api
 from pymongo import MongoClient
 
