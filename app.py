@@ -50,13 +50,13 @@ def teacher_register():
 def student_register():
     return render_template("register-student.html", ip_addr=ip_addr)
 
-@app.route('/edit-teacher_id/<teacher_id>', methods=['POST','GET'])
+@app.route('/edit_teacher_id/<teacher_id>', methods=['POST','GET'])
 def edit_teacher_id(teacher_id):
     iid = teacher_id
     c = teacher.find_one({"_id": int(iid)})
     return render_template("edit-teacher.html", data=c, ip_addr=ip_addr)
 
-@app.route('/edit-student_id/<student_id>', methods=['POST','GET'])
+@app.route('/edit_student_id/<student_id>', methods=['POST','GET'])
 def edit_student_id(student_id):
     iid = student_id
     c = student.find_one({"_id": int(iid)})
