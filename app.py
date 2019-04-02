@@ -108,9 +108,9 @@ def edit_submit():
     address = request.form["address"]
     description = request.form["description"]
 
-    mydict = {'first_name': first_name,'last_name':last_name,'email':email,'address':address,'description':description,'image':filenames}
+    mydict = {'first_name': first_name, 'last_name':last_name, 'email': email, 'address': address, 'description': description, 'image': filenames}
 
-    y = teacher.update_one({"_id" : int(c)},{"$set":mydict},upsert=False)
+    y = teacher.update_one({"_id" : int(c)}, {"$set": mydict}, upsert=False)
     return render_template("teacher-list.html")
 
 
