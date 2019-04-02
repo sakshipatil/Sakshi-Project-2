@@ -1,0 +1,10 @@
+FROM alpine:latest
+FROM python:latest
+# Install app dependencies
+
+RUN ls
+RUN pip3 install -r /app
+COPY . /app
+
+RUN pip3 install -r /app/Requirements.txt
+CMD ["python", "/app/app.py"]
